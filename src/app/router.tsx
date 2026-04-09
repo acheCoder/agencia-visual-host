@@ -1,33 +1,47 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import MainLayout from '../components/layout/MainLayout';
 
-// --- Placeholders Temporales ---
-const Dashboard = () => (
-  <div style={{ backgroundColor: 'var(--color-surface)', padding: '2rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-    <h3>🏠 Panel Principal</h3><p>Bienvenido al orquestador Host.</p>
-  </div>
-);
-const ClientesSlot = () => (
-  <div style={{ backgroundColor: '#e0f2fe', padding: '2rem', borderRadius: '8px', border: '2px dashed #0284c7' }}>
-    <h3 style={{ color: '#0369a1' }}>👥 Ranura: Microfrontal de Clientes</h3><p>Esperando conexión remota...</p>
-  </div>
-);
-const FacturacionSlot = () => (
-  <div style={{ backgroundColor: '#fef08a', padding: '2rem', borderRadius: '8px', border: '2px dashed #ca8a04' }}>
-    <h3 style={{ color: '#a16207' }}>📄 Ranura: Microfrontal de Facturación</h3><p>Esperando conexión remota...</p>
+// --- Placeholders Tematizados ---
+const Portfolio = () => (
+  <div style={{ animation: 'fadeIn 0.5s ease-in' }}>
+    <h1 style={{ color: 'var(--color-brand-primary)' }}>💻 Mi Porfolio de Desarrollador</h1>
+    <p>Aquí se cargará tu historial de proyectos, stack tecnológico y experiencia profesional.</p>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginTop: '2rem' }}>
+      {[1, 2, 3].map(i => <div key={i} style={{ height: '100px', backgroundColor: '#eee', borderRadius: '8px' }}></div>)}
+    </div>
   </div>
 );
 
-// --- Configuración de Rutas ---
+const Agencia = () => (
+  <div style={{ animation: 'fadeIn 0.5s ease-in' }}>
+    <h1 style={{ color: '#059669' }}>🚀 Agencia de Desarrollo B2B</h1>
+    <p>Sección dedicada a la venta de servicios web para pequeños negocios y digitalización.</p>
+    <div style={{ padding: '2rem', backgroundColor: '#ecfdf5', borderRadius: '12px', marginTop: '2rem', border: '1px solid #10b981' }}>
+      <h3>Servicio Destacado: Pack Digital Start-up</h3>
+    </div>
+  </div>
+);
+
+const Fitness = () => (
+  <div style={{ animation: 'fadeIn 0.5s ease-in' }}>
+    <h1 style={{ color: '#dc2626' }}>💪 Hubert Personal Trainer</h1>
+    <p>Tu plataforma de servicios de fitness, nutrición y seguimiento de clientes.</p>
+    <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
+      <div style={{ flex: 1, padding: '1.5rem', backgroundColor: '#fef2f2', border: '1px solid #f87171', borderRadius: '8px' }}>Planes Online</div>
+      <div style={{ flex: 1, padding: '1.5rem', backgroundColor: '#fef2f2', border: '1px solid #f87171', borderRadius: '8px' }}>Rutinas</div>
+    </div>
+  </div>
+);
+
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <MainLayout />, // El Layout envuelve todas las rutas hijas
+    element: <MainLayout />,
     children: [
-      { index: true, element: <Navigate to="/dashboard" replace /> }, // Redirección por defecto
-      { path: 'dashboard', element: <Dashboard /> },
-      { path: 'clientes', element: <ClientesSlot /> },
-      { path: 'facturacion', element: <FacturacionSlot /> },
+      { index: true, element: <Navigate to="/portfolio" replace /> },
+      { path: 'portfolio', element: <Portfolio /> },
+      { path: 'agencia', element: <Agencia /> },
+      { path: 'fitness', element: <Fitness /> },
     ],
   },
 ]);
