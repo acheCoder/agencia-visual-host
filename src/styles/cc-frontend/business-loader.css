@@ -1,0 +1,9 @@
+/* 1. Cargamos el núcleo común */
+@import '../common-enterprise/global--all.css';
+
+/* 2. Personalización de la marca (Agencia Visual) */
+:root {
+  --color-brand-primary: #0052cc; /* Azul corporativo principal */
+  --color-brand-sidebar: #1e293b; /* Azul marino oscuro para el menú */
+  --color-brand-text-inverse: #ffffff;
+}
