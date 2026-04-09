@@ -1,0 +1,1 @@
+declare module 'portfolio_remote/PortfolioApp';
