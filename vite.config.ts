@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+
+// @ts-ignore - Ignoramos la falta de tipos oficiales para evitar que el build de Vercel (tsc) falle
 import federation from '@originjs/vite-plugin-federation';
 
 export default defineConfig(({ mode }) => {
