@@ -12,11 +12,12 @@ import LoadingRemote from '../components/layout/LoadingRemote';
 // eslint-disable-next-line react-refresh/only-export-components
 const PortfolioApp = React.lazy(() => import('portfolio_remote/PortfolioApp'));
 
+// TODO: Descomentar cuando los remotos estén desplegados en Vercel
 // eslint-disable-next-line react-refresh/only-export-components
-const AgenciaApp = React.lazy(() => import('agencia_remote/AgenciaApp'));
+// const AgenciaApp = React.lazy(() => import('agencia_remote/AgenciaApp'));
 
 // eslint-disable-next-line react-refresh/only-export-components
-const FitnessApp = React.lazy(() => import('fitness_remote/FitnessApp'));
+// const FitnessApp = React.lazy(() => import('fitness_remote/FitnessApp'));
 
 /**
  * CONFIGURACIÓN DE RUTAS
@@ -40,25 +41,26 @@ export const router = createBrowserRouter([
         ) 
       },
 
+      // TODO: Descomentar cuando los remotos estén desplegados en Vercel
       // Ruta: Agencia B2B (Puerto 5002)
-      { 
-        path: 'agencia', 
-        element: (
-          <Suspense fallback={<LoadingRemote />}>
-            <AgenciaApp />
-          </Suspense>
-        ) 
-      },
+      // { 
+      //   path: 'agencia', 
+      //   element: (
+      //     <Suspense fallback={<LoadingRemote />}>
+      //       <AgenciaApp />
+      //     </Suspense>
+      //   ) 
+      // },
 
       // Ruta: Entrenamiento Personal (Puerto 5003)
-      { 
-        path: 'fitness', 
-        element: (
-          <Suspense fallback={<LoadingRemote />}>
-            <FitnessApp />
-          </Suspense>
-        ) 
-      },
+      // { 
+      //   path: 'fitness', 
+      //   element: (
+      //     <Suspense fallback={<LoadingRemote />}>
+      //       <FitnessApp />
+      //     </Suspense>
+      //   ) 
+      // },
     ],
   },
 ]);
