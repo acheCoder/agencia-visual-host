@@ -174,8 +174,13 @@ export default function RetroMinigame({
       ctx.fillStyle = '#0a0a0a';
       ctx.fillRect(0, 0, canvasSize, canvasSize);
 
+      // Wall border (visible inside canvas)
+      ctx.strokeStyle = '#00ff41';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(1.5, 1.5, canvasSize - 3, canvasSize - 3);
+
       // Grid lines (subtle)
-      ctx.strokeStyle = 'rgba(0, 223, 154, 0.04)';
+      ctx.strokeStyle = 'rgba(0, 255, 65, 0.06)';
       ctx.lineWidth = 0.5;
       for (let i = 0; i <= GRID_SIZE; i++) {
         ctx.beginPath();
@@ -236,6 +241,11 @@ export default function RetroMinigame({
       ctx.fillStyle = '#0a0a0a';
       ctx.fillRect(0, 0, canvasSize, canvasSize);
 
+      // Wall border
+      ctx.strokeStyle = '#00ff41';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(1.5, 1.5, canvasSize - 3, canvasSize - 3);
+
       ctx.fillStyle = '#00df9a';
       ctx.font = `bold ${canvasSize * 0.06}px "JetBrains Mono", monospace`;
       ctx.textAlign = 'center';
@@ -285,23 +295,22 @@ export default function RetroMinigame({
 
       {/* Game Over Actions */}
       {gameOver && (
-        <div className="retro-minigame__actions">
-          <button className="retro-minigame__btn retro-minigame__btn--retry" onClick={resetGame}>
-            Reintentar
-          </button>
-          {score >= rewardThreshold && (
-            <button
-              className="retro-minigame__btn retro-minigame__btn--reward"
-              onClick={() => onClaimReward?.(score)}
-            >
-              🏆 Reclamar Premio
-            </button>
-          )}
-        </div>
+        <button className="retro-minigame__retry" onClick={resetGame}>
+          ↻ Reintentar
+        </button>
+      )}
+      {gameOver && score >= rewardThreshold && (
+        <button
+          className="retro-minigame__reward"
+          onClick={() => onClaimReward?.(score)}
+        >
+          🏆 Reclamar Premio
+        </button>
       )}
 
-      {/* D-Pad (Mobile) */}
-      <div className="retro-minigame__dpad">
+      {/* D-Pad (Mobile only) */}
+      <div className="retro-minigame__controls">
+        <div className="retro-minigame__dpad">
         <button
           className="retro-minigame__dpad-btn retro-minigame__dpad-btn--up"
           onTouchStart={(e) => { e.preventDefault(); if (!started) resetGame(); changeDirection('UP'); }}
@@ -330,6 +339,7 @@ export default function RetroMinigame({
         >
           ▼
         </button>
+        </div>
       </div>
     </div>
   );
