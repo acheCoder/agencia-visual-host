@@ -11,7 +11,7 @@ import axiomIcon from '../../assets/axiom.png';
 import fitnessIcon from '../../assets/fitness.png';
 import portfolioIcon from '../../assets/porfolio.png';
 import gamesFolderIcon from '../../assets/gamesFolder.png';
-import logoApple from '../../assets/logoApple.png';
+import logoApple from '../../assets/logoApple2.png';
 
 gsap.registerPlugin(Draggable);
 
