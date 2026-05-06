@@ -1,0 +1,245 @@
+// ─── Variables de Color ───────────────────────────────────────────────────────
+$bg-deep: #050505;
+$accent-axiom: #00df9a;
+$accent-hubertfit: #ff914d;
+$accent-portfolio: #8b5cf6;
+$glass-bg: rgba(255, 255, 255, 0.04);
+$glass-border: rgba(255, 255, 255, 0.08);
+$text-primary: #ffffff;
+$text-secondary: rgba(255, 255, 255, 0.55);
+$text-muted: rgba(255, 255, 255, 0.35);
+
+// ─── Contenedor Principal ─────────────────────────────────────────────────────
+.portal-hub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  background: $bg-deep;
+  overflow: hidden;
+  padding: 24px 16px;
+  box-sizing: border-box;
+
+  // Efecto de ruido sutil
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+// ─── Orbe de Luz Difuminado ───────────────────────────────────────────────────
+.portal-hub__orb {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba($accent-axiom, 0.12) 0%,
+    rgba($accent-hubertfit, 0.08) 40%,
+    transparent 70%
+  );
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: blur(80px);
+  z-index: 0;
+}
+
+// ─── Contenido ────────────────────────────────────────────────────────────────
+.portal-hub__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 420px;
+}
+
+// ─── Header / Perfil ──────────────────────────────────────────────────────────
+.portal-hub__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.portal-hub__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid rgba($accent-axiom, 0.4);
+  background: linear-gradient(135deg, rgba($accent-axiom, 0.2), rgba($accent-hubertfit, 0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: $text-primary;
+  overflow: hidden;
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.portal-hub__name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.portal-hub__bio {
+  font-size: 0.9rem;
+  color: $text-secondary;
+  margin: 0;
+  max-width: 280px;
+  line-height: 1.4;
+}
+
+// ─── Tarjetas ─────────────────────────────────────────────────────────────────
+.portal-hub__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.portal-hub__card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  min-height: 100px;
+  border-radius: 20px;
+  background: $glass-bg;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid $glass-border;
+  text-decoration: none;
+  color: $text-primary;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+
+  &--axiom {
+    &:hover,
+    &:focus-visible {
+      border-color: rgba($accent-axiom, 0.5);
+      box-shadow: 0 0 30px rgba($accent-axiom, 0.15), inset 0 0 20px rgba($accent-axiom, 0.03);
+    }
+  }
+
+  &--hubertfit {
+    &:hover,
+    &:focus-visible {
+      border-color: rgba($accent-hubertfit, 0.5);
+      box-shadow: 0 0 30px rgba($accent-hubertfit, 0.15), inset 0 0 20px rgba($accent-hubertfit, 0.03);
+    }
+  }
+
+  &--portfolio {
+    &:hover,
+    &:focus-visible {
+      border-color: rgba($accent-portfolio, 0.5);
+      box-shadow: 0 0 30px rgba($accent-portfolio, 0.15), inset 0 0 20px rgba($accent-portfolio, 0.03);
+    }
+  }
+}
+
+.portal-hub__card-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--axiom {
+    background: rgba($accent-axiom, 0.1);
+    color: $accent-axiom;
+  }
+
+  &--hubertfit {
+    background: rgba($accent-hubertfit, 0.1);
+    color: $accent-hubertfit;
+  }
+
+  &--portfolio {
+    background: rgba($accent-portfolio, 0.1);
+    color: $accent-portfolio;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.portal-hub__card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.portal-hub__card-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: $text-primary;
+  margin: 0;
+}
+
+.portal-hub__card-subtitle {
+  font-size: 0.85rem;
+  color: $text-muted;
+  margin: 0;
+  line-height: 1.3;
+}
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
+.portal-hub__footer {
+  font-size: 0.75rem;
+  color: $text-muted;
+  text-align: center;
+  margin-top: 8px;
+}
+
+// ─── Responsive (Tablet+) ────────────────────────────────────────────────────
+@media (min-width: 768px) {
+  .portal-hub__content {
+    max-width: 480px;
+  }
+
+  .portal-hub__avatar {
+    width: 96px;
+    height: 96px;
+  }
+
+  .portal-hub__name {
+    font-size: 2rem;
+  }
+
+  .portal-hub__cards {
+    gap: 20px;
+  }
+
+  .portal-hub__card {
+    padding: 24px 28px;
+    min-height: 110px;
+  }
+}

@@ -1,4 +1,5 @@
 import { Component, type ReactNode, type ErrorInfo } from 'react';
+import { remoteEventEmitter } from '../../app/remoteEventEmitter';
 
 interface Props {
   children: ReactNode;
@@ -21,7 +22,13 @@ export class RemoteErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
-    console.error(`[RemoteErrorBoundary] Error en remoto "${this.props.remoteName}":`, error, info);
+    const remoteName = this.props.remoteName ?? 'unknown';
+    console.error(`[RemoteErrorBoundary] Error en remoto "${remoteName}":`, error, info);
+    remoteEventEmitter.emit('remote:error', {
+      remoteName,
+      error,
+      timestamp: Date.now(),
+    });
   }
 
   render() {

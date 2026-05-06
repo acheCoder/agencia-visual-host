@@ -1,0 +1,131 @@
+.minesweeper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #0a0a0a;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 4px;
+  }
+
+  &__mines {
+    font-size: 0.8rem;
+    color: #ff914d;
+  }
+
+  &__status {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &__reset {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1rem;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  &__board {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border: 1px solid rgba(0, 223, 154, 0.15);
+    border-radius: 4px;
+    padding: 4px;
+  }
+
+  &__row {
+    display: flex;
+    gap: 2px;
+  }
+
+  &__cell {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.1s;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover:not(&--revealed) {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    &--revealed {
+      background: rgba(0, 0, 0, 0.4);
+      cursor: default;
+    }
+
+    &--mine {
+      background: rgba(255, 50, 50, 0.2);
+    }
+
+    &--n1 { color: #4fc3f7; }
+    &--n2 { color: #00df9a; }
+    &--n3 { color: #ff914d; }
+    &--n4 { color: #8b5cf6; }
+    &--n5 { color: #ff5f57; }
+    &--n6 { color: #febc2e; }
+    &--n7 { color: #e0e0e0; }
+    &--n8 { color: #888; }
+
+    @media (max-width: 767px) {
+      width: 28px;
+      height: 28px;
+      font-size: 0.65rem;
+    }
+  }
+
+  &__actions {
+    margin-top: 8px;
+  }
+
+  &__btn {
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 6px;
+    border: 1px solid #00df9a;
+    background: transparent;
+    color: #00df9a;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(0, 223, 154, 0.1);
+    }
+
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+}
