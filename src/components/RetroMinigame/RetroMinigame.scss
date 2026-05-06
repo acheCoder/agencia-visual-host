@@ -2,126 +2,79 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 16px;
+  gap: 0.75rem;
+  padding: 1rem;
   background: #0a0a0a;
   border-radius: 8px;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-family: 'Courier New', monospace;
+  color: #00ff41;
   width: 100%;
-  max-width: 440px;
-  margin: 0 auto;
+  box-sizing: border-box;
 
-  // ─── Header ────────────────────────────────────────────────────────────
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0 4px;
+    max-width: 320px;
   }
 
   &__title {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 2px;
+    color: #00ff41;
   }
 
   &__score {
     font-size: 0.8rem;
-    color: #00df9a;
-
-    strong {
-      font-weight: 700;
-    }
+    color: #00cc33;
   }
 
-  // ─── Canvas ────────────────────────────────────────────────────────────
-  &__canvas {
-    display: block;
-    border: 1px solid rgba(0, 223, 154, 0.2);
-    border-radius: 4px;
-    image-rendering: pixelated;
-    max-width: 100%;
-    cursor: pointer;
-  }
-
-  // ─── Actions (Game Over) ───────────────────────────────────────────────
-  &__actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  &__canvas-wrapper {
+    position: relative;
     width: 100%;
-    padding-top: 4px;
-  }
+    max-width: 320px;
+    aspect-ratio: 1;
+    border: 2px solid #00ff41;
+    border-radius: 4px;
+    overflow: hidden;
 
-  &__btn {
-    font-family: inherit;
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 10px 24px;
-    border-radius: 6px;
-    border: 1px solid;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-
-    &:active {
-      transform: scale(0.96);
-    }
-
-    &--retry {
-      background: transparent;
-      border-color: #00df9a;
-      color: #00df9a;
-
-      &:hover {
-        background: rgba(0, 223, 154, 0.1);
-      }
-    }
-
-    &--reward {
-      background: rgba(255, 145, 77, 0.12);
-      border-color: #ff914d;
-      color: #ff914d;
-
-      &:hover {
-        background: rgba(255, 145, 77, 0.2);
-      }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
   }
 
-  // ─── D-Pad (Mobile Only) ───────────────────────────────────────────────
-  &__dpad {
+  &__controls {
     display: none;
+    margin-top: 0.5rem;
+  }
+
+  &__dpad {
+    display: grid;
     grid-template-columns: repeat(3, 48px);
     grid-template-rows: repeat(3, 48px);
     gap: 4px;
-    margin-top: 8px;
-
-    @media (pointer: coarse), (max-width: 767px) {
-      display: grid;
-    }
   }
 
   &__dpad-btn {
+    background: #1a1a1a;
+    border: 1px solid #00ff41;
+    border-radius: 6px;
+    color: #00ff41;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 1.1rem;
     cursor: pointer;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
 
     &:active {
-      background: rgba(0, 223, 154, 0.2);
-      border-color: #00df9a;
-      color: #00df9a;
+      background: #00ff41;
+      color: #0a0a0a;
     }
 
     &--up {
@@ -143,5 +96,31 @@
       grid-column: 2;
       grid-row: 3;
     }
+  }
+
+  &__reward-btn {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    background: #00ff41;
+    color: #0a0a0a;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &:hover {
+      background: #00cc33;
+    }
+  }
+}
+
+/* Mostrar D-Pad solo en touch/mobile */
+@media (pointer: coarse), (max-width: 767px) {
+  .retro-minigame__controls {
+    display: block;
   }
 }

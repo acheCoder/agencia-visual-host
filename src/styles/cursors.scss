@@ -1,0 +1,8 @@
+/* Override cursors: macOS nativo para este repo */
+body {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%23000000' stroke='%23FFFFFF' stroke-width='1.5' d='M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86 2.66 6.13c.15.35.56.5.91.35l1.9-1.07c.35-.15.5-.56.35-.91l-2.73-6.28h5.36c.45 0 .67-.54.35-.85L5.5 3.21z'/></svg>") 4 4, auto;
+}
+
+a, button, [role="button"], input, select, textarea, .clickable {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%23000000' stroke='%23FFFFFF' stroke-width='1.2' d='M12 2.5c-.69 0-1.25.56-1.25 1.25v7h-.5c-.69 0-1.25.56-1.25 1.25v1h-.5c-.69 0-1.25.56-1.25 1.25V21c0 .55.45 1 1 1h7.5c2.07 0 3.75-1.68 3.75-3.75V11c0-.69-.56-1.25-1.25-1.25h-.5V6.5c0-.69-.56-1.25-1.25-1.25s-1.25.56-1.25 1.25v1h-.5V3.75c0-.69-.56-1.25-1.25-1.25z'/></svg>") 8 4, pointer !important;
+}

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import './PortalHub.scss';
 
 import axiomIcon from '../../assets/axiom.png';
@@ -11,7 +11,7 @@ const EXTERNAL_URLS = {
   fitness: 'https://hubert-fitness-remote.vercel.app',
 };
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -20,7 +20,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 30, opacity: 0 },
   visible: {
     y: 0,

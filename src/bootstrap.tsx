@@ -6,6 +6,7 @@ import { store } from './app/store';
 import { router } from './app/router';
 
 import './common-submodule/src/styles/global.scss';
+import './styles/cursors.scss';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
