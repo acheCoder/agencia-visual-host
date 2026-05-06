@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { Draggable } from 'gsap/Draggable';
@@ -92,7 +92,7 @@ function IconLogo() {
   );
 }
 
-const iconMap: Record<string, () => JSX.Element> = {
+const iconMap: Record<string, () => React.ReactElement> = {
   axiom: IconAxiom,
   fitness: IconFitness,
   portfolio: IconPortfolio,
@@ -117,7 +117,7 @@ export default function OsDesktop() {
 
   const [systemState, setSystemState] = useState<'BOOTING' | 'LOCKED' | 'DESKTOP'>('BOOTING');
   const [windows, setWindows] = useState<Record<string, boolean>>({});
-  const [activeWindow, setActiveWindow] = useState<string | null>(null);
+  const [_activeWindow, setActiveWindow] = useState<string | null>(null);
   const [mobileApp, setMobileApp] = useState<AppInfo | null>(null);
   const windowElRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
