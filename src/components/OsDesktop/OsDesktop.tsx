@@ -529,6 +529,7 @@ export default function OsDesktop() {
             </div>
             <h2 className="os-mobile__fullscreen-title">{mobileApp.name}</h2>
             <p className="os-mobile__fullscreen-desc">{mobileApp.subtitle}</p>
+            <p className="os-mobile__fullscreen-description">{mobileApp.description}</p>
             <a
               href={mobileApp.url}
               className={`os-mobile__fullscreen-cta os-mobile__fullscreen-cta--${mobileApp.id}`}
